@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 import "./App.css";
 
 function App() {
@@ -45,18 +45,26 @@ function App() {
     {
       formLegend: "Is your cat an indoor or outdoor cat?",
       formLabels: ["Indoor", "Outdoor"],
-      formType: "radio" // radio is a form type that only allows the user to select one label
+      formType: "radio", // radio is a form type that only allows the user to select one label
     },
     {
       formLegend: "What's your cat's personality?",
       formLabels: ["Loving", "Lazy", "Energetic"],
-      formType: "checkbox" // checkbox is form type that allows the user to select as many labels as they want
-    }
-  ]
+      formType: "checkbox", // checkbox is form type that allows the user to select as many labels as they want
+    },
+  ];
 
   // Function that generates images from catImages
   const catImagesElements = catImages.map((catImage) => {
-    return <a href="https://freecatphotoapp.com"><img className="frontImages" src={catImage.imageURL} alt={catImage.caption} /></a>;
+    return (
+      <a href="https://freecatphotoapp.com">
+        <img
+          className="frontImages"
+          src={catImage.imageURL}
+          alt={catImage.caption}
+        />
+      </a>
+    );
   });
 
   //Function that generates cat lists from catLists
@@ -71,25 +79,35 @@ function App() {
         </catList.listType>
 
         <img src={catList.listImage} alt={catList.listImageAlt} />
-        <figcaption dangerouslySetInnerHTML={{__html:catList.listImageCaption}}></figcaption>
-
+        <figcaption
+          dangerouslySetInnerHTML={{ __html: catList.listImageCaption }}
+        ></figcaption>
       </>
     );
   });
 
   //Function that generates car forms from catForms
-  const catFormsElements = catForms.map((catForm)=>{
+  const catFormsElements = catForms.map((catForm) => {
     return (
       <>
-      <fieldset>
-      <legend>{catForm.formLegend}</legend>
-        {catForm.formLabels.map((formLabel)=>{
-          return (<label><input name={catForm.formLegend} className="formsInputs" type={catForm.formType} />{formLabel}</label>) 
-        })}
+        <fieldset>
+          <legend>{catForm.formLegend}</legend>
+          {catForm.formLabels.map((formLabel) => {
+            return (
+              <label>
+                <input
+                  name={catForm.formLegend}
+                  className="formsInputs"
+                  type={catForm.formType}
+                />
+                {formLabel}
+              </label>
+            );
+          })}
         </fieldset>
       </>
-    )
-  })
+    );
+  });
 
   return (
     <body>
@@ -113,16 +131,20 @@ function App() {
         <section>
           <h2>Cat Form</h2>
           <form action="https://freecatphotoapp.com/submit-cat-photo">
-          {catFormsElements}
-          <input type="text" name="catphotourl" placeholder="cat photo URL" required/>
-          <button type="submit">Submit</button>
+            {catFormsElements}
+            <input
+              type="text"
+              name="catphotourl"
+              placeholder="cat photo URL"
+              required
+            />
+            <button type="submit">Submit</button>
           </form>
         </section>
       </main>
       <footer>
-      <p>
-        No Copyright - <a href="https://www.freecodecamp.org">freeCodeCamp.org</a>
-      </p>
+        No Copyright -{" "}
+        <a href="https://www.freecodecamp.org">freeCodeCamp.org</a>
       </footer>
     </body>
   );
